@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="JustGan">
-<meta property="og:url" content="https://white-airspace.github.io/white.github.io/index.html">
+<meta property="og:url" content="https://white-airspace.github.io/white-airspace.github.io/index.html">
 <meta property="og:site_name" content="JustGan">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="white">
@@ -56,13 +56,57 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://white-airspace.github.io/white.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://white-airspace.github.io/white-airspace.github.io"></form>
       </div>
     </div>
   </div>
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-JS倒计时在IOSwebView息屏会暂停的解决方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2020-02-23T12:15:41.000Z" itemprop="datePublished">2020-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">JS倒计时在IOSwebView息屏会暂停的解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="IOS-AD-webview-有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题"><a href="#IOS-AD-webview-有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题" class="headerlink" title="IOS/AD webview 有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题"></a>IOS/AD webview 有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题</h2><p>` 应用场景: 页面有个倒计时函数如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 计算订单倒计时</span></span><br><span class="line">Countdown() &#123;</span><br><span class="line">        <span class="keyword">let</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="comment">//当前时间</span></span><br><span class="line">            createTime = +<span class="keyword">new</span> <span class="built_in">Date</span>(createTime),<span class="comment">//创建时间</span></span><br><span class="line">            exprie = <span class="number">30</span> * <span class="number">60</span> * <span class="number">1000</span>, <span class="comment">// 过期时长</span></span><br><span class="line">            dif = (createTime + exprie) - now;</span><br><span class="line">        <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (dif &gt; <span class="number">1000</span>) &#123;</span><br><span class="line">                dif -= <span class="number">1000</span></span><br><span class="line">                <span class="keyword">let</span> minute = <span class="built_in">Math</span>.floor((dif / <span class="number">1000</span> / <span class="number">60</span>) % <span class="number">60</span>);</span><br><span class="line">                <span class="keyword">let</span> second = <span class="built_in">Math</span>.floor(dif / <span class="number">1000</span> % <span class="number">60</span>);</span><br><span class="line">                <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                    seconds: second &lt; <span class="number">10</span> ? <span class="string">"0"</span> + second : second,</span><br><span class="line">                    minute: minute &lt; <span class="number">10</span> ? <span class="string">"0"</span> + minute : minute,</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                clearInterval(<span class="keyword">this</span>.timer);</span><br><span class="line">                <span class="built_in">window</span>.location.reload()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>页面加载完调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">componentDidMount()&#123;</span><br><span class="line">    <span class="keyword">this</span>.Countdown() <span class="comment">// 倒计时</span></span><br><span class="line">    <span class="keyword">this</span>.visibilityChange() <span class="comment">//判断页面是否被隐藏</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义监听页面是否被隐藏函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">visibilityChange() &#123;</span><br><span class="line">        <span class="comment">//判断页面是否被隐藏 兼容 IOS/AD</span></span><br><span class="line">        <span class="keyword">let</span> hidden, visibilityChange;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.hidden !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            hidden = <span class="string">"hidden"</span>;</span><br><span class="line">            visibilityChange = <span class="string">"visibilitychange"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.mozHidden !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            hidden = <span class="string">"mozHidden"</span>;</span><br><span class="line">            visibilityChange = <span class="string">"mozvisibilitychange"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.msHidden !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            hidden = <span class="string">"msHidden"</span>;</span><br><span class="line">            visibilityChange = <span class="string">"msvisibilitychange"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.webkitHidden !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            hidden = <span class="string">"webkitHidden"</span>;</span><br><span class="line">            visibilityChange = <span class="string">"webkitvisibilitychange"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="built_in">document</span>.addEventListener(visibilityChange, () =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">document</span>[hidden]) &#123;</span><br><span class="line">                <span class="comment">// 再次执行一次矫正时间    </span></span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'回来了'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://white-airspace.github.io/white-airspace.github.io/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="ck6z0yzui0000uvgl752e7gm7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Javascript中你不需要的循环" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -136,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://white-airspace.github.io/white.github.io/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/" data-id="ck64h21ml00000jgl792yd07n" class="article-share-link">Share</a>
+      <a data-url="https://white-airspace.github.io/white-airspace.github.io/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/" data-id="ck64h21ml00000jgl792yd07n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -185,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://white-airspace.github.io/white.github.io/2020/01/31/hello-world/" data-id="ck61kaan900002jgl7x5tcklw" class="article-share-link">Share</a>
+      <a data-url="https://white-airspace.github.io/white-airspace.github.io/2020/01/31/hello-world/" data-id="ck61kaan900002jgl7x5tcklw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,6 +268,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">JS倒计时在IOSwebView息屏会暂停的解决方法</a>
+          </li>
         
           <li>
             <a href="/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/">Javascript中你不需要的循环</a>
