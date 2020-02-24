@@ -1,330 +1,400 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<html lang="zh-CN">
 
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="description" content="">
+  <meta name="author" content="white">
+  <meta name="keywords" content="">
   <title>JustGan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JustGan">
-<meta property="og:url" content="https://white-airspace.github.io/white-airspace.github.io/index.html">
-<meta property="og:site_name" content="JustGan">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="white">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="JustGan" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/github-v2.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">JustGan</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>JustGan</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://white-airspace.github.io/white-airspace.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-JS倒计时在IOSwebView息屏会暂停的解决方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="article-date">
-  <time datetime="2020-02-23T12:15:41.000Z" itemprop="datePublished">2020-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">JS倒计时在IOSwebView息屏会暂停的解决方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="IOS-AD-webview-有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题"><a href="#IOS-AD-webview-有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题" class="headerlink" title="IOS/AD webview 有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题"></a>IOS/AD webview 有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题</h2><p>` 应用场景: 页面有个倒计时函数如下:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 计算订单倒计时</span></span><br><span class="line">Countdown() &#123;</span><br><span class="line">        <span class="keyword">let</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="comment">//当前时间</span></span><br><span class="line">            createTime = +<span class="keyword">new</span> <span class="built_in">Date</span>(createTime),<span class="comment">//创建时间</span></span><br><span class="line">            exprie = <span class="number">30</span> * <span class="number">60</span> * <span class="number">1000</span>, <span class="comment">// 过期时长</span></span><br><span class="line">            dif = (createTime + exprie) - now;</span><br><span class="line">        <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (dif &gt; <span class="number">1000</span>) &#123;</span><br><span class="line">                dif -= <span class="number">1000</span></span><br><span class="line">                <span class="keyword">let</span> minute = <span class="built_in">Math</span>.floor((dif / <span class="number">1000</span> / <span class="number">60</span>) % <span class="number">60</span>);</span><br><span class="line">                <span class="keyword">let</span> second = <span class="built_in">Math</span>.floor(dif / <span class="number">1000</span> % <span class="number">60</span>);</span><br><span class="line">                <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                    seconds: second &lt; <span class="number">10</span> ? <span class="string">"0"</span> + second : second,</span><br><span class="line">                    minute: minute &lt; <span class="number">10</span> ? <span class="string">"0"</span> + minute : minute,</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                clearInterval(<span class="keyword">this</span>.timer);</span><br><span class="line">                <span class="built_in">window</span>.location.reload()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>页面加载完调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">componentDidMount()&#123;</span><br><span class="line">    <span class="keyword">this</span>.Countdown() <span class="comment">// 倒计时</span></span><br><span class="line">    <span class="keyword">this</span>.visibilityChange() <span class="comment">//判断页面是否被隐藏</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>定义监听页面是否被隐藏函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">visibilityChange() &#123;</span><br><span class="line">        <span class="comment">//判断页面是否被隐藏 兼容 IOS/AD</span></span><br><span class="line">        <span class="keyword">let</span> hidden, visibilityChange;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.hidden !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            hidden = <span class="string">"hidden"</span>;</span><br><span class="line">            visibilityChange = <span class="string">"visibilitychange"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.mozHidden !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            hidden = <span class="string">"mozHidden"</span>;</span><br><span class="line">            visibilityChange = <span class="string">"mozvisibilitychange"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.msHidden !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            hidden = <span class="string">"msHidden"</span>;</span><br><span class="line">            visibilityChange = <span class="string">"msvisibilitychange"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">document</span>.webkitHidden !== <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            hidden = <span class="string">"webkitHidden"</span>;</span><br><span class="line">            visibilityChange = <span class="string">"webkitvisibilitychange"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="built_in">document</span>.addEventListener(visibilityChange, () =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">document</span>[hidden]) &#123;</span><br><span class="line">                <span class="comment">// 再次执行一次矫正时间    </span></span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'回来了'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://white-airspace.github.io/white-airspace.github.io/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-id="ck6z0yzui0000uvgl752e7gm7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Javascript中你不需要的循环" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/" class="article-date">
-  <time datetime="2020-02-02T03:34:35.000Z" itemprop="datePublished">2020-02-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/">Javascript中你不需要的循环</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="为什么我们需要替换循环"><a href="#为什么我们需要替换循环" class="headerlink" title="为什么我们需要替换循环?"></a>为什么我们需要替换循环?</h2><h3 id="使用高阶函数在你的代码中"><a href="#使用高阶函数在你的代码中" class="headerlink" title="使用高阶函数在你的代码中 :"></a>使用高阶函数在你的代码中 :</h3><ol>
-<li>更具可读性</li>
-<li>容易明白</li>
-<li>更容易调试</li>
-<li>等等…</li>
-</ol>
-<h1 id="1-遍历所有元素并获取新的修改后的数组"><a href="#1-遍历所有元素并获取新的修改后的数组" class="headerlink" title="1. 遍历所有元素并获取新的修改后的数组"></a>1. 遍历所有元素并获取新的修改后的数组</h1><p>使用循环:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> names = [<span class="string">"Jack"</span>, <span class="string">"Jecci"</span>, <span class="string">"Ram"</span>, <span class="string">"Tom"</span>];</span><br><span class="line"><span class="keyword">var</span> upperCaseNames = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>, totalNames = names.length; i&lt; totalNames ; i= i +<span class="number">1</span>) &#123;</span><br><span class="line">    upperCaseNames[i] = names[i].toUpperCase();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>不使用循环:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> names = [<span class="string">"Jack"</span>, <span class="string">"Jecci"</span>, <span class="string">"Ram"</span>, <span class="string">"Tom"</span>];</span><br><span class="line"><span class="keyword">var</span> upperCaseNames = names.map(<span class="function"><span class="params">name</span> =&gt;</span> name.toUpperCase());</span><br></pre></td></tr></table></figure>
-
-<p> 注意:当你在使用map的时候,在循环中你不能 break ,continue 或者 return. 以上例子你可以使用 <code>every</code> 或者 <code>some</code> 来实现.</p>
-<h1 id="2-遍历所有元素并且添加操作"><a href="#2-遍历所有元素并且添加操作" class="headerlink" title="2.遍历所有元素并且添加操作"></a>2.遍历所有元素并且添加操作</h1><p> 使用循环</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">print</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> names = [<span class="string">"Jack"</span>, <span class="string">"Jecci"</span>, <span class="string">"Ram"</span>, <span class="string">"Tom"</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>, totalNames = names.length; i&lt; totalNames ; i= i +<span class="number">1</span>) &#123;</span><br><span class="line">    print(names[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 不使用循环</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> names = [<span class="string">"Jack"</span>, <span class="string">"Jecci"</span>, <span class="string">"Ram"</span>, <span class="string">"Tom"</span>];</span><br><span class="line">names.forEach(<span class="function"><span class="params">name</span>=&gt;</span> print(name));</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-过滤数组"><a href="#3-过滤数组" class="headerlink" title="3.过滤数组"></a>3.过滤数组</h1><p> 使用正常的 <code>for</code> 循环</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">isOdd</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> n %<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> odd = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>, total = numbers.length; i&lt; total ; i= i +<span class="number">1</span>) &#123;</span><br><span class="line">   <span class="keyword">let</span> number = numbers[i];</span><br><span class="line">   <span class="keyword">if</span>( isOdd(number) ) &#123;</span><br><span class="line">      odd.push(number);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>filter</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="keyword">var</span> odd = numbers.filter(<span class="function"><span class="params">n</span> =&gt;</span> n%<span class="number">2</span>); <span class="comment">// single line</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="4-使用数组元素创建输出"><a href="#4-使用数组元素创建输出" class="headerlink" title="4.使用数组元素创建输出"></a>4.使用数组元素创建输出</h1><p>计算和</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="keyword">var</span> result = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>, total = numbers.length; i&lt; total ; i= i +<span class="number">1</span>) &#123;</span><br><span class="line">   result = result + numbers[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>使用 <code>reduce</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">accumulator, currentValue</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> accumulator + currentValue;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> initialVal = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> result = numbers.reduce(sum, initialVal);</span><br></pre></td></tr></table></figure>
-
-<p>以上代码继续优化版本</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>, <span class="number">10</span>];</span><br><span class="line"><span class="keyword">var</span> result = numbers.reduce(<span class="function">(<span class="params">acc, val</span>)=&gt;</span> acc+val, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="5-检查数组书否包含某个值"><a href="#5-检查数组书否包含某个值" class="headerlink" title="5.检查数组书否包含某个值"></a>5.检查数组书否包含某个值</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> names = [<span class="string">"ram"</span>, <span class="string">"raj"</span>, <span class="string">"rahul"</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>, totalNames = names.length; i&lt; totalNames ; i= i +<span class="number">1</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span>(names[i] === <span class="string">"rahul"</span>) &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"%c found rahul"</span>, <span class="string">"color:red"</span>);</span><br><span class="line">     <span class="keyword">return</span>; </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>some</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> names = [<span class="string">"ram"</span>, <span class="string">"raj"</span>, <span class="string">"rahul"</span>];</span><br><span class="line"><span class="keyword">let</span> isRahulPresent = names.some(<span class="function"><span class="params">name</span> =&gt;</span> name===<span class="string">"rahul"</span>);</span><br><span class="line"><span class="keyword">if</span>(isRahulPresent) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"%c found rahul"</span>, <span class="string">"color:red"</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="6-检查数组中的每个元素是否都满足条件"><a href="#6-检查数组中的每个元素是否都满足条件" class="headerlink" title="6. 检查数组中的每个元素是否都满足条件"></a>6. 检查数组中的每个元素是否都满足条件</h1><p><code>for</code> 循环版本</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>, <span class="number">0</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>, total = numbers.length; i&lt; total ; i= i +<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"0 present in array"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>every</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>, <span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> isZeroFree = num.every(<span class="function"><span class="params">e</span> =&gt;</span> e &gt; <span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(!isZeroFree) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"0 present in array"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://white-airspace.github.io/white-airspace.github.io/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/" data-id="ck64h21ml00000jgl792yd07n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/31/hello-world/" class="article-date">
-  <time datetime="2020-01-31T02:41:11.203Z" itemprop="datePublished">2020-01-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://white-airspace.github.io/white-airspace.github.io/2020/01/31/hello-world/" data-id="ck61kaan900002jgl7x5tcklw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">JS倒计时在IOSwebView息屏会暂停的解决方法</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
           </li>
         
-          <li>
-            <a href="/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/">Javascript中你不需要的循环</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
           </li>
         
-          <li>
-            <a href="/2020/01/31/hello-world/">Hello World</a>
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
-  
-</aside>
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/gan.png')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+        <p class="h4 index-header">JS倒计时在IOSwebView息屏会暂停的解决方法</p>
+      </a>
+
+      <a href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">IOS/AD webview 有JS倒计时函数时候息屏或者切换后台倒计时会暂停的问题` 应用场景: 页面有个倒计时函数如下:
+1234567891011121314151617181920212223// 计算订单倒计时Countdown() &#123;        let now = +new Date(), //当前时间            createTime = +new Date(createTime),//创建时间            exprie = 30 * 60 * 1000, // 过期时长            dif = (createTime + exprie) - now;        this.timer = setInterval(() =&gt; &#123;            if (dif &gt; 1000) &#123;                dif -= 1000                let minute = Math.floor((dif / 1000 / 60) % 60);                </div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-23&nbsp;&nbsp;
+        
+        
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 white<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
-</footer>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/">
+        <p class="h4 index-header">Javascript中你不需要的循环</p>
+      </a>
+
+      <a href="/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">为什么我们需要替换循环?使用高阶函数在你的代码中 :
+更具可读性
+容易明白
+更容易调试
+等等…
+
+1. 遍历所有元素并获取新的修改后的数组使用循环:
+12345var names = ["Jack", "Jecci", "Ram", "Tom"];var upperCaseNames = [];for(let i=0, totalNames = names.length; i&lt; totalNames ; i= i +1) &#123;    upperCaseNames[i] = names[i].toUpperCase();&#125;
+
+
+不使用循环:
+12var names = ["Jack", "Jecci", "Ram", "Tom"];var upperCaseNames = names.map(name =&gt; name.toUpperCase());
+
+ 注意:当你在使用map的时候,在循环中你不能 break ,continue 或者 return. 以上例子你可以使用 every 或者 some 来实现.
+2.遍历所有元素并且添加操作 使用循环
+ 1234</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-02&nbsp;&nbsp;
+        
+        
+        
+      </div>
     </div>
-    <nav id="mobile-nav">
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
   
-</nav>
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+  
+  <br>
+
+
+
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
+    <!-- cnzz Analytics icon -->
+    
 
   </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "就是GAN&nbsp;",
+      ],
+      cursorChar: "㊞",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
