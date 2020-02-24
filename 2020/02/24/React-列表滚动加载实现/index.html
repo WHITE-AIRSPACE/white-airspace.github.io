@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="white">
   <meta name="keywords" content="">
-  <title>归档 ~ JustGan</title>
+  <title>React 列表滚动加载实现 ~ JustGan</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -106,7 +106,7 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="view intro-2" id="background" false
          style="background: url('/img/default.png')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
@@ -116,6 +116,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 24日 2020, 2:23 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    91 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -127,47 +162,76 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 3 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/24/React-%E5%88%97%E8%A1%A8%E6%BB%9A%E5%8A%A8%E5%8A%A0%E8%BD%BD%E5%AE%9E%E7%8E%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">React 列表滚动加载实现</span>
-      <span style="float: right;">02-24</span>
-    </a>
-  
-    
-    <a href="/2020/02/23/JS%E5%80%92%E8%AE%A1%E6%97%B6%E5%9C%A8IOSwebView%E6%81%AF%E5%B1%8F%E4%BC%9A%E6%9A%82%E5%81%9C%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">JS倒计时在IOSwebView息屏会暂停的解决方法</span>
-      <span style="float: right;">02-23</span>
-    </a>
-  
-    
-    <a href="/2020/02/02/Javascript%E4%B8%AD%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81%E7%9A%84%E5%BE%AA%E7%8E%AF/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Javascript中你不需要的循环</span>
-      <span style="float: right;">02-02</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="REACT-滚动加载实现"><a href="#REACT-滚动加载实现" class="headerlink" title="REACT 滚动加载实现"></a>REACT 滚动加载实现</h2><h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><pre><code class="js">
+    checkVisible = (node) =&gt; {
+        if (node) {
+            const {top, bottom, left, right} = node.getBoundingClientRect();
+            return bottom &gt; 0
+                &amp;&amp; top &lt; window.innerHeight
+                &amp;&amp; left &lt; window.innerWidth
+                &amp;&amp; right &gt; 0;
+        }
+        return false;
+    }
+</code></pre>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">getBoundingClientRect 接口相关知识 </a></p>
+</blockquote>
+<p>滚动监听判断监听的元素是否出现在屏幕中</p>
+<pre><code class="js">    handleScroll() {
+        let more = document.getElementById(&#39;more&#39;) // 监测的元素
+        if (this.checkVisible(more)) {
+            this.loadMore()
+        }
+    }
 
-              </div>
-            </div>
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -236,6 +300,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -276,7 +345,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "React 列表滚动加载实现&nbsp;",
       ],
       cursorChar: "㊞",
       typeSpeed: 70,
