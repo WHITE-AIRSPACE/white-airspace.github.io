@@ -8,7 +8,7 @@
     <link href="/2020/07/16/Linux-everyday/"/>
     <url>/2020/07/16/Linux-everyday/</url>
     
-    <content type="html"><![CDATA[<h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h3><pre><code class="hljs shell">pwd使用pwd命令找出您所在的当前工作目录（文件夹）的路径。该命令将返回绝对（完整）路径</code></pre><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><pre><code class="hljs shell">ls 默认情况下，此命令将显示当前工作目录的内容;如果要查看其他文件夹内容，可在 `ls` 后面输入目录的路径，例如： `ls /home/user`还可以搭配以下参数使用：* ls -R  子目录的所有文件也会被列出* ls -a  将显示隐藏的文件* ls -al 将列出文件和目录以及详细信息，例如权限，大小，所有者等。</code></pre>]]></content>
+    <content type="html"><![CDATA[<h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h3><pre><code class="hljs shell">pwd使用pwd命令找出您所在的当前工作目录（文件夹）的路径。该命令将返回绝对（完整）路径</code></pre><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><pre><code class="hljs shell">ls 默认情况下，此命令将显示当前工作目录的内容;如果要查看其他文件夹内容，可在 `ls` 后面输入目录的路径，例如： `ls /home/user`还可以搭配以下参数使用：- ls -R  子目录的所有文件也会被列出- ls -a  将显示隐藏的文件- ls -al 将列出文件和目录以及详细信息，例如权限，大小，所有者等。</code></pre><h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>是Linux中最常用的命令之一,它用于在标准输出（sdout）上列出文件的内容,<br>要运行此命令，请键入cat，然后输入文件名及其扩展名。例如：cat file.txt。</p><p>使用方法</p><ul><li><code>cat&gt; filename</code>创建一个新文件</li><li><code>cat filename1 filename2&gt; filename3</code> 合并两个文件（1和2）并将它们的输出存储在新文件中（3）</li><li>将文件转换为大写或小写使用，<code>cat filename | TR AZ AZ&gt; output.txt</code></li></ul><h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><p>使用cp命令将文件从当前目录复制到另一个目录。<br>例如，命令<code>cp scenery.jpg /home/username/Pictures</code>将在您的Pictures目录中（从您的当前目录创建）scenery.jpg的副本。</p><h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><p>经常用于移动文件，也可用于重命名文件</p><p>mv中的参数类似于cp命令，您需要输入mv，文件名和目标目录。<br>例如：<code>mv file.txt /home/username/Documents。</code></p><p>重命名的使用，<code>mv  oldname.ext newname.ext</code></p><h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h3><p>使用mkdir命令创建一个新目录-如果键入mkdir Music，它将创建一个名为Music的目录。</p><p>还有其他的mkdir命令：</p><ul><li>要在另一个目录中生成新目录，请使用此Linux基本命令<code>mkdir Music/ Newfile</code></li><li>使用  p（父级）选项在两个现有目录之间创建目录。例如，<code>mkdir -p Music / 2020 / Newfile</code>将创建新的“ 2020”文件。</li></ul><h3 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h3><p>如果需要删除目录，请使用rmdir命令。但是，rmdir仅允许您删除空目录。</p><h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p>该RM命令用于删除目录以及其中的内容。如果只想删除目录（作为rmdir的替代方法），请使用rm -r。</p><p>注意：使用此命令时要格外小心，并仔细检查您所在的目录。这将删除所有内容，并且没有撤消操作。</p><h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><p>该<code>touch</code>命令允许您创建通过Linux命令行新的空白文件。例如，输入<code>touch /home/username/Documents/Web.html在Documents</code>目录下创建一个名为Web的HTML文件。</p><h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><p>您可以使用此命令来定位文件，就像Windows中的搜索命令一样。此外，将-i参数与该命令一起使用将使其不区分大小写，因此即使您不记得其确切名称，也可以搜索文件。</p><p>要搜索包含两个或多个单词的文件，请使用星号（*）。例如，locate -i school * note命令将搜索任何包含单词“ school”和“ note”的文件，无论它是大写还是小写。</p><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>在类似定位命令，使用  查找也搜索文件和目录。区别在于，您可以使用find命令在给定目录中查找文件。</p><p>例如，find / home / -name notes.txt命令将在主目录及其子目录中搜索名为notes.txt的文件。</p><p>使用查找时的其他变化 是：</p><ul><li>要查找当前目录中使用的文件，<code>find .-name notes.txt</code></li><li>要查找目录，请使用<code>/ -type d -name notes. txt</code></li></ul>]]></content>
     
     
     
@@ -31,6 +31,12 @@
     
     
     
+    <tags>
+      
+      <tag>javascript</tag>
+      
+    </tags>
+    
   </entry>
   
   
@@ -43,6 +49,12 @@
     <content type="html"><![CDATA[<h2 id="REACT-滚动加载实现"><a href="#REACT-滚动加载实现" class="headerlink" title="REACT 滚动加载实现"></a>REACT 滚动加载实现</h2><h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><pre><code class="hljs js">checkVisible = <span class="hljs-function">(<span class="hljs-params">node</span>) =&gt;</span> &#123;    <span class="hljs-keyword">if</span> (node) &#123;        <span class="hljs-keyword">const</span> &#123;top, bottom, left, right&#125; = node.getBoundingClientRect();        <span class="hljs-keyword">return</span> bottom &gt; <span class="hljs-number">0</span>            &amp;&amp; top &lt; <span class="hljs-built_in">window</span>.innerHeight            &amp;&amp; left &lt; <span class="hljs-built_in">window</span>.innerWidth            &amp;&amp; right &gt; <span class="hljs-number">0</span>;    &#125;    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;&#125;</code></pre><blockquote><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">getBoundingClientRect 接口相关知识 </a></p></blockquote><p>滚动监听判断监听的元素是否出现在屏幕中</p><pre><code class="hljs js">handleScroll() &#123;    <span class="hljs-keyword">let</span> more = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'more'</span>) <span class="hljs-comment">// 监测的元素</span>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.checkVisible(more)) &#123;        <span class="hljs-keyword">this</span>.loadMore()    &#125;&#125;</code></pre><pre><code class="hljs js">loadMore()&#123;    <span class="hljs-comment">// more data</span>&#125;</code></pre>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>React</tag>
+      
+    </tags>
     
   </entry>
   
