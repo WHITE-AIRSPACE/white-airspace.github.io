@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="WHITE">
   <meta name="keywords" content="">
-  <title>Linux-everyday - GAN</title>
+  <title>WebSocket聊天室原理 - GAN</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-16 20:10">
-      July 16, 2020 pm
+    <time datetime="2020-07-20 19:23">
+      July 20, 2020 pm
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      383 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      5
        分钟
     </span>
   
@@ -204,74 +204,76 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h3><pre><code class="hljs shell">pwd
+              <h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>对 WebSocket 协议 有了解的人，都应该知道它是一种<a href="https://en.wikipedia.org/wiki/Push_technology" target="_blank" rel="noopener">服务器推送技术</a>,</p>
+<p>这个协议跟HTTP协议不同的地方在于： <code>HTTP 服务必须由客户端发起请求，服务端返回结果。</code> 做不到服务器主动向客户端推送信息，<br>加入服务端有一个状态连续的变化，客户端要获取会很麻烦，而 WebSocket 协议刚好可以用在这种时候。</p>
+<p>WebSocket 最大的特点就是可以通过单个TCP连接提供双向的通信。</p>
+<p>利用它的特点我们可以来写一个小的聊天室，顺便学习一下使用技巧</p>
+<p>这里前端我们使用 <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">Create React App</a>.<br>来实现前端页面。</p>
+<p>新建 Chat.js</p>
+<ol>
+<li>React 使用 Websocket</li>
+</ol>
+<pre><code class="hljs js">ws = <span class="hljs-keyword">new</span> WebSocket(URL)
 
-使用pwd命令找出您所在的当前工作目录（文件夹）的路径。该命令将返回绝对（完整）路径</code></pre>
+componentDidMount() &#123;
+    <span class="hljs-keyword">this</span>.ws.onopen = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+        <span class="hljs-comment">// on connecting, do nothing but log it to the console</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'connected'</span>)
+    &#125;
 
-<h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><pre><code class="hljs shell">ls 
-默认情况下，此命令将显示当前工作目录的内容;
-如果要查看其他文件夹内容，可在 `ls` 后面输入目录的路径，
-例如： `ls /home/user`
+    <span class="hljs-keyword">this</span>.ws.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> &#123;
+        <span class="hljs-comment">// on receiving a message, add it to the list of messages</span>
+        <span class="hljs-keyword">const</span> message = <span class="hljs-built_in">JSON</span>.parse(evt.data)
+        <span class="hljs-keyword">this</span>.addMessage(message)
+    &#125;
 
-还可以搭配以下参数使用：
+    <span class="hljs-keyword">this</span>.ws.onclose = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'disconnected'</span>)
+        <span class="hljs-comment">// automatically try to reconnect on connection loss</span>
+        <span class="hljs-keyword">this</span>.setState(&#123;
+            ws: <span class="hljs-keyword">new</span> WebSocket(URL),
+        &#125;)
+    &#125;
+&#125;</code></pre>
 
-- ls -R  子目录的所有文件也会被列出
-- ls -a  将显示隐藏的文件
-- ls -al 将列出文件和目录以及详细信息，例如权限，大小，所有者等。</code></pre>
+<ol start="2">
+<li>发送消息</li>
+</ol>
+<pre><code class="hljs js">
+submitMessage = <span class="hljs-function"><span class="hljs-params">messageString</span> =&gt;</span> &#123;
+       <span class="hljs-comment">// on submitting the ChatInput form, send the message, add it to the list and reset the input</span>
+       <span class="hljs-keyword">const</span> message = &#123; <span class="hljs-attr">name</span>: <span class="hljs-keyword">this</span>.state.name, <span class="hljs-attr">message</span>: messageString &#125;
+       <span class="hljs-keyword">this</span>.ws.send(<span class="hljs-built_in">JSON</span>.stringify(message))
+       <span class="hljs-keyword">this</span>.addMessage(message)
+   &#125;</code></pre>
 
-<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>是Linux中最常用的命令之一,它用于在标准输出（sdout）上列出文件的内容,<br>要运行此命令，请键入cat，然后输入文件名及其扩展名。例如：cat file.txt。</p>
-<p>使用方法</p>
-<ul>
-<li><code>cat&gt; filename</code>创建一个新文件</li>
-<li><code>cat filename1 filename2&gt; filename3</code> 合并两个文件（1和2）并将它们的输出存储在新文件中（3）</li>
-<li>将文件转换为大写或小写使用，<code>cat filename | TR AZ AZ&gt; output.txt</code></li>
-</ul>
-<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><p>使用cp命令将文件从当前目录复制到另一个目录。<br>例如，命令<code>cp scenery.jpg /home/username/Pictures</code>将在您的Pictures目录中（从您的当前目录创建）scenery.jpg的副本。</p>
-<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><p>经常用于移动文件，也可用于重命名文件</p>
-<p>mv中的参数类似于cp命令，您需要输入mv，文件名和目标目录。<br>例如：<code>mv file.txt /home/username/Documents。</code></p>
-<p>重命名的使用，<code>mv  oldname.ext newname.ext</code></p>
-<h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h3><p>使用mkdir命令创建一个新目录-如果键入mkdir Music，它将创建一个名为Music的目录。</p>
-<p>还有其他的mkdir命令：</p>
-<ul>
-<li>要在另一个目录中生成新目录，请使用此Linux基本命令<code>mkdir Music/ Newfile</code></li>
-<li>使用  p（父级）选项在两个现有目录之间创建目录。例如，<code>mkdir -p Music / 2020 / Newfile</code>将创建新的“ 2020”文件。</li>
-</ul>
-<h3 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h3><p>如果需要删除目录，请使用rmdir命令。但是，rmdir仅允许您删除空目录。</p>
-<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p>该RM命令用于删除目录以及其中的内容。如果只想删除目录（作为rmdir的替代方法），请使用rm -r。</p>
-<p>注意：使用此命令时要格外小心，并仔细检查您所在的目录。这将删除所有内容，并且没有撤消操作。</p>
-<h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><p>该<code>touch</code>命令允许您创建通过Linux命令行新的空白文件。例如，输入<code>touch /home/username/Documents/Web.html在Documents</code>目录下创建一个名为Web的HTML文件。</p>
-<h3 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h3><p>您可以使用此命令来定位文件，就像Windows中的搜索命令一样。此外，将-i参数与该命令一起使用将使其不区分大小写，因此即使您不记得其确切名称，也可以搜索文件。</p>
-<p>要搜索包含两个或多个单词的文件，请使用星号（*）。例如，locate -i school * note命令将搜索任何包含单词“ school”和“ note”的文件，无论它是大写还是小写。</p>
-<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>在类似定位命令，使用  查找也搜索文件和目录。区别在于，您可以使用find命令在给定目录中查找文件。</p>
-<p>例如，find / home / -name notes.txt命令将在主目录及其子目录中搜索名为notes.txt的文件。</p>
-<p>使用查找时的其他变化 是：</p>
-<ul>
-<li>要查找当前目录中使用的文件，<code>find .-name notes.txt</code></li>
-<li>要查找目录，请使用<code>/ -type d -name notes. txt</code></li>
-</ul>
-<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p>另一个经常经常会使用到的命令<code>grep</code>, 可以帮助你搜索出所有文本在你指定的文件中。</p>
-<p>例如， <code>grep blue notepad.text</code> 将会在 “notepad.text” 文件中搜索 “blue” 这个单词，并且会显示该搜索结果的行数。</p>
-<h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h3><p>这个命令是 “SuperUser Do” 的简称， 使您能够执行需要管理或超级用户权限的任务。 但是，建议不要将此命令用于日常使用，因为如果您做错了事，很容易发生错误。</p>
-<h3 id="df"><a href="#df" class="headerlink" title="df"></a>df</h3><p>使用df命令可获取有关系统磁盘空间使用情况的报告，以百分比和KB表示。如果要以兆字节为单位查看报告，请输入<code>df -m</code>。</p>
-<h3 id="du"><a href="#du" class="headerlink" title="du"></a>du</h3><p>如果要检查文件或目录占用了多少空间，答案是du（磁盘使用情况）命令。但是，磁盘使用情况摘要将显示磁盘块号，而不是通常的大小格式。如果要以字节，千字节和兆字节为单位查看它，请在命令行中添加-h参数。</p>
+<p>后端代码很简单，起一个WebSocket服务就行</p>
+<pre><code class="hljs js">
+<span class="hljs-keyword">const</span> WebSocket = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
+
+<span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> WebSocket.Server(&#123; <span class="hljs-attr">port</span>: <span class="hljs-number">3030</span> &#125;);
+
+wss.on(<span class="hljs-string">'connection'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">connection</span>(<span class="hljs-params">ws</span>) </span>&#123;
+  ws.on(<span class="hljs-string">'message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">incoming</span>(<span class="hljs-params">data</span>) </span>&#123;
+    wss.clients.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">each</span>(<span class="hljs-params">client</span>) </span>&#123;
+      <span class="hljs-keyword">if</span> (client !== ws &amp;&amp; client.readyState === WebSocket.OPEN) &#123;
+        client.send(data);
+      &#125;
+    &#125;);
+  &#125;);
+&#125;);</code></pre>
+
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-                    
-                  </div>
-                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/linux/">linux</a>
+                      <a class="hover-with-bg" href="/tags/WebSocket/">WebSocket</a>
                     
                   </div>
                 
@@ -284,18 +286,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/19/JS%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E7%A6%81%E6%AD%A2%E6%88%AA%E5%B1%8F/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JS实现页面禁止截屏</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/07/08/ios-coudown/">
-                        <span class="hidden-mobile">IOS WEBVIEW 进程被挂起倒计时失效的问题</span>
+                      <a href="/2020/07/19/JS%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E7%A6%81%E6%AD%A2%E6%88%AA%E5%B1%8F/">
+                        <span class="hidden-mobile">JS实现页面禁止截屏</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -434,7 +430,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Linux-everyday&nbsp;",
+        "WebSocket聊天室原理&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
