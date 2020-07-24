@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      1.8k 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      20
        分钟
     </span>
   
@@ -260,6 +260,18 @@
 <h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p>该命令是最常用的命令归档多个文件到一个压缩包 -类似于zip格式常见的Linux文件格式，压缩是可选的。<br>此命令非常复杂，具有很多功能，例如将新文件添加到现有档案中，列出档案内容，从档案中提取内容等等。查看一些<a href="https://www.linuxtechi.com/17-tar-command-examples-in-linux/" target="_blank" rel="noopener">实际示例</a>，以了解有关其他功能的更多信息。</p>
 <h3 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h3><p>chmod是另一个Linux命令，用于更改文件和目录的读取，写入和执行权限。由于此命令相当复杂，因此您可以阅读<a href="https://www.computerhope.com/unix/uchmod.htm" target="_blank" rel="noopener">完整的教程</a>以正确执行它。</p>
 <h3 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h3><p>在Linux中，所有文件均由特定用户拥有。该CHOWN命令使您可以更改或文件的所有权转让给指定的用户名。例如，chown linuxuser2 file.ext将使linuxuser2成为file.ext的所有者。</p>
+<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><p>如果您的程序无响应，则可以使用kill命令手动终止它。它将向运行异常的应用发送特定信号，并指示该应用自行终止。</p>
+<p>您总共可以使用<a href="https://linoxide.com/linux-how-to/linux-signals-part-1/" target="_blank" rel="noopener">64个信号</a>，但是人们通常只使用两个信号：</p>
+<ul>
+<li>SIGTERM (15) -请求程序停止运行，并给它一些时间来保存其所有进度。如果在输入kill命令时未指定信号，则将使用此信号。</li>
+<li>SIGKILL (9) -强制程序立即停止。未保存的进度将丢失。</li>
+</ul>
+<p>除了知道信号之外，您还需要知道要杀死的程序的进程标识号（PID）。如果您不知道PID，只需运行命令ps ux。</p>
+<p>在知道您要使用什么信号以及程序的PID之后，输入以下语法：</p>
+<p>kill [信号选项] PID。</p>
+<h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><p>使用ping命令检查与服务器的连接状态。例如，只需输入ping google.com，该命令将检查您是否能够连接到Google并测量响应时间。</p>
+<h3 id="wget"><a href="#wget" class="headerlink" title="wget"></a>wget</h3><p>Linux命令行非常有用-您甚至可以在wget命令的帮助下从Internet下载文件。为此，只需键入wget，然后键入下载链接。</p>
+<h3 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h3><p>该UNAME命令，短期对于Unix名，将打印您的Linux系统，如计算机名称的详细信息，操作系统，内核，等等。</p>
 
             </article>
             <hr>
