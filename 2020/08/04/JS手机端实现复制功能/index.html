@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="WHITE">
   <meta name="keywords" content="">
-  <title>WebSocket聊天室原理 - GAN</title>
+  <title>JS手机端实现复制功能 - GAN</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-20 19:23">
-      July 20, 2020 pm
+    <time datetime="2020-08-04 17:13">
+      August 4, 2020 pm
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      383 字
+      287 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      4
        分钟
     </span>
   
@@ -204,76 +204,101 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h3><p>对 WebSocket 协议 有了解的人，都应该知道它是一种<a href="https://en.wikipedia.org/wiki/Push_technology" target="_blank" rel="noopener">服务器推送技术</a>,</p>
-<p>这个协议跟HTTP协议不同的地方在于： <code>HTTP 服务必须由客户端发起请求，服务端返回结果。</code> 做不到服务器主动向客户端推送信息，<br>加入服务端有一个状态连续的变化，客户端要获取会很麻烦，而 WebSocket 协议刚好可以用在这种时候。</p>
-<p>WebSocket 最大的特点就是可以通过单个TCP连接提供双向的通信。</p>
-<p>利用它的特点我们可以来写一个小的聊天室，顺便学习一下使用技巧</p>
-<p>这里前端我们使用 <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">Create React App</a>.<br>来实现前端页面。</p>
-<p>新建 Chat.js</p>
-<ol>
-<li>React 使用 Websocket</li>
-</ol>
-<pre><code class="hljs js">ws = <span class="hljs-keyword">new</span> WebSocket(URL)
+              <h1 id="在手机端实现复制功能-记录一下代码"><a href="#在手机端实现复制功能-记录一下代码" class="headerlink" title="在手机端实现复制功能 记录一下代码"></a>在手机端实现复制功能 记录一下代码</h1><pre><code class="hljs js"><span class="hljs-comment">//定义函数</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> Clipboard = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">window, document, navigator</span>) </span>&#123;
+  <span class="hljs-keyword">var</span> textArea, copy;
 
-componentDidMount() &#123;
-    <span class="hljs-keyword">this</span>.ws.onopen = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
-        <span class="hljs-comment">// on connecting, do nothing but log it to the console</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'connected'</span>)
+  <span class="hljs-comment">// 判断是不是ios端</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOS</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">return</span> navigator.userAgent.match(<span class="hljs-regexp">/ipad|iphone/i</span>);
+  &#125;
+  <span class="hljs-comment">//创建文本元素</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createTextArea</span>(<span class="hljs-params">text</span>) </span>&#123;
+    textArea = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"textArea"</span>);
+    textArea.value = text;
+    textArea.setAttribute(<span class="hljs-string">"readonly"</span>, <span class="hljs-string">"readonly"</span>);
+    <span class="hljs-built_in">document</span>.body.appendChild(textArea);
+  &#125;
+  <span class="hljs-comment">//选择内容</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectText</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">var</span> range, selection;
+
+    <span class="hljs-keyword">if</span> (isOS()) &#123;
+      range = <span class="hljs-built_in">document</span>.createRange();
+      range.selectNodeContents(textArea);
+      selection = <span class="hljs-built_in">window</span>.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      textArea.setSelectionRange(<span class="hljs-number">0</span>, <span class="hljs-number">999999</span>);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      textArea.select();
     &#125;
+  &#125;
 
-    <span class="hljs-keyword">this</span>.ws.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> &#123;
-        <span class="hljs-comment">// on receiving a message, add it to the list of messages</span>
-        <span class="hljs-keyword">const</span> message = <span class="hljs-built_in">JSON</span>.parse(evt.data)
-        <span class="hljs-keyword">this</span>.addMessage(message)
-    &#125;
-
-    <span class="hljs-keyword">this</span>.ws.onclose = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'disconnected'</span>)
-        <span class="hljs-comment">// automatically try to reconnect on connection loss</span>
-        <span class="hljs-keyword">this</span>.setState(&#123;
-            ws: <span class="hljs-keyword">new</span> WebSocket(URL),
-        &#125;)
-    &#125;
-&#125;</code></pre>
-
-<ol start="2">
-<li>发送消息</li>
-</ol>
-<pre><code class="hljs js">
-submitMessage = <span class="hljs-function"><span class="hljs-params">messageString</span> =&gt;</span> &#123;
-       <span class="hljs-comment">// on submitting the ChatInput form, send the message, add it to the list and reset the input</span>
-       <span class="hljs-keyword">const</span> message = &#123; <span class="hljs-attr">name</span>: <span class="hljs-keyword">this</span>.state.name, <span class="hljs-attr">message</span>: messageString &#125;
-       <span class="hljs-keyword">this</span>.ws.send(<span class="hljs-built_in">JSON</span>.stringify(message))
-       <span class="hljs-keyword">this</span>.addMessage(message)
-   &#125;</code></pre>
-
-<p>后端代码很简单，起一个WebSocket服务就行</p>
-<pre><code class="hljs js">
-<span class="hljs-keyword">const</span> WebSocket = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
-
-<span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> WebSocket.Server(&#123; <span class="hljs-attr">port</span>: <span class="hljs-number">3030</span> &#125;);
-
-wss.on(<span class="hljs-string">'connection'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">connection</span>(<span class="hljs-params">ws</span>) </span>&#123;
-  ws.on(<span class="hljs-string">'message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">incoming</span>(<span class="hljs-params">data</span>) </span>&#123;
-    wss.clients.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">each</span>(<span class="hljs-params">client</span>) </span>&#123;
-      <span class="hljs-keyword">if</span> (client !== ws &amp;&amp; client.readyState === WebSocket.OPEN) &#123;
-        client.send(data);
+  <span class="hljs-comment">//复制到剪贴板</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">copyToClipboard</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">try</span> &#123;
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">"Copy"</span>)) &#123;
+        Toast(<span class="hljs-string">"復制成功"</span>);
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        Toast(<span class="hljs-string">"復制失敗請手動復制！"</span>);
       &#125;
-    &#125;);
-  &#125;);
-&#125;);</code></pre>
+    &#125; <span class="hljs-keyword">catch</span> (err) &#123;
+      Toast(<span class="hljs-string">"復制錯誤請手動復制！"</span>);
+    &#125;
+    <span class="hljs-built_in">document</span>.body.removeChild(textArea);
+  &#125;
 
+  copy = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">text</span>) </span>&#123;
+    createTextArea(text);
+    selectText();
+    copyToClipboard();
+  &#125;;
+
+  <span class="hljs-comment">// 这个提示框可以自定写需要的样式，或者使用你使用的UI框架的消息弹窗</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Toast</span>(<span class="hljs-params">message</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> m = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"div"</span>);
+    m.setAttribute(<span class="hljs-string">"class"</span>, <span class="hljs-string">"messageBox"</span>);
+    m.id = <span class="hljs-string">"mess"</span>;
+    m.innerText = message;
+    <span class="hljs-built_in">document</span>.body.appendChild(m);
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+      <span class="hljs-keyword">let</span> r = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"mess"</span>);
+      <span class="hljs-built_in">document</span>.body.removeChild(r);
+    &#125;, <span class="hljs-number">1500</span>);
+  &#125;
+
+  <span class="hljs-keyword">return</span> &#123;
+    copy: copy,
+  &#125;;
+&#125;)(<span class="hljs-built_in">window</span>, <span class="hljs-built_in">document</span>, navigator);</code></pre>
+
+<h3 id="例如在-vue-中使用"><a href="#例如在-vue-中使用" class="headerlink" title="例如在 vue 中使用"></a>例如在 vue 中使用</h3><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; Clipboard &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'../utils/copy'</span>;
+
+<span class="hljs-string">`&lt;button @click="copy(value)"&gt;复制 &lt;/button&gt;`</span>
+
+
+copy(value) &#123;
+    Clipboard.copy(values);   
+&#125;,</code></pre>
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/WebSocket/">WebSocket</a>
+                      <a class="hover-with-bg" href="/tags/Javascript/">Javascript</a>
                     
                   </div>
                 
@@ -286,18 +311,12 @@ wss.on(<span class="hljs-string">'connection'</span>, <span class="hljs-function
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/24/CSSFlexBox%E5%86%99%E4%B8%AA%E6%95%B0%E5%AD%97%E9%94%AE%E7%9B%98%E6%9C%89%E5%A4%9A%E7%AE%80%E5%8D%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSSFlexBox写个数字键盘有多简单</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/07/19/JS%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E7%A6%81%E6%AD%A2%E6%88%AA%E5%B1%8F/">
-                        <span class="hidden-mobile">JS实现页面禁止截屏</span>
+                      <a href="/2020/07/24/CSSFlexBox%E5%86%99%E4%B8%AA%E6%95%B0%E5%AD%97%E9%94%AE%E7%9B%98%E6%9C%89%E5%A4%9A%E7%AE%80%E5%8D%95/">
+                        <span class="hidden-mobile">CSSFlexBox写个数字键盘有多简单</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -436,7 +455,7 @@ wss.on(<span class="hljs-string">'connection'</span>, <span class="hljs-function
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "WebSocket聊天室原理&nbsp;",
+        "JS手机端实现复制功能&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
